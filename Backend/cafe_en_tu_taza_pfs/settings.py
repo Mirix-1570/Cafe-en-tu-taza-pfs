@@ -75,11 +75,11 @@ WSGI_APPLICATION = 'cafe_en_tu_taza_pfs.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'cafe': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cafe_en_tu_taza_pfs',
         'USER': 'root',
