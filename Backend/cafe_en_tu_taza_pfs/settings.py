@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pfs_cafe_en_tu_taza',
+    'cafe_en_tu_taza_pfs',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -75,17 +77,13 @@ WSGI_APPLICATION = 'cafe_en_tu_taza_pfs.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'sqlite': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cafe_en_tu_taza_pfs',
         'USER': 'root',
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'PASSWORD': 'Root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     },
 }
 

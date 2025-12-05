@@ -15,16 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from pfs_cafe_en_tu_taza.views import farm_list, order_list, post_list, producer_list, product_list, user_list
+from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('farms/', farm_list, name='farm-list'),
-    path('orders/', order_list, name='order-list'),
-    path('posts/', post_list, name='post-list'),
-    path('producers/', producer_list, name='producer-list'),
-    path('products/', product_list, name='product-list'),
-    path('users/', user_list, name='user-list'),
-]
+    path('admin/', admin.site.urls)]

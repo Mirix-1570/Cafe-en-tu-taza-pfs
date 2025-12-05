@@ -1,39 +1,84 @@
 from django.shortcuts import render
+from .models import Farms, FarmPost, Order, OrderUser, Post, Producer, Product, ProductFarm, User, UserProduct, Farm
+from rest_framework import generics
+from .serializers import FarmSerializer, FarmPostSerializer, OrderSerializer, OrderUserSerializer, PostSerializer, ProducerSerializer, ProductSerializer, ProductFarmSerializer, UserSerializer, UserProductSerializer
 
-# Create your views here
-from django.http import JsonResponse
-from .models import Farms, Orders, Posts, Producers, Products, Users
+class FarmListCreateView(generics.ListCreateAPIView):
+    queryset = Farm.objects.all()
+    serializer_class = FarmSerializer
 
+class FarmRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Farm.objects.all()
+    serializer_class = FarmSerializer
 
-def get_model_data(model_class, id_field, name_field, status_field):
-    items = model_class.objects.using('cafe').all()
-    data = [{
-        id_field: getattr(item, id_field),
-        name_field: getattr(item, name_field),
-        status_field: getattr(item, status_field)
-    } for item in items]
-    return JsonResponse(data, safe=False)
+class FarmPostListCreateView(generics.ListCreateAPIView):
+    queryset = FarmPost.objects.all()
+    serializer_class = FarmPostSerializer
 
+class FarmPostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = FarmPost.objects.all()
+    serializer_class = FarmPostSerializer
 
-def farm_list(request):
-    return get_model_data(Farms, 'farms_id', 'farms_name', 'farms_status')
+class OrderListCreateView(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
 
+class OrderRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
 
-def order_list(request):
-    return get_model_data(Orders, 'orders_id', 'orders_name', 'orders_status')
+class OrderUserListCreateView(generics.ListCreateAPIView):
+    queryset = OrderUser.objects.all()
+    serializer_class = OrderUserSerializer
 
+class OrderUserRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = OrderUser.objects.all()
+    serializer_class = OrderUserSerializer
 
-def post_list(request):
-    return get_model_data(Posts, 'posts_id', 'posts_name', 'posts_status')
+class PostListCreateView(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
+class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
-def producer_list(request):
-    return get_model_data(Producers, 'producers_id', 'producers_name', 'producers_status')
+class ProducerListCreateView(generics.ListCreateAPIView):
+    queryset = Producer.objects.all()
+    serializer_class = ProducerSerializer
 
+class ProducerRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Producer.objects.all()
+    serializer_class = ProducerSerializer
 
-def product_list(request):
-    return get_model_data(Products, 'products_id', 'products_name', 'products_status')
+class ProductListCreateView(generics.ListCreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
+class ProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
-def user_list(request):
-    return get_model_data(Users, 'users_id', 'users_name', 'users_status')
+class ProductFarmListCreateView(generics.ListCreateAPIView):
+    queryset = ProductFarm.objects.all()
+    serializer_class = ProductFarmSerializer
+
+class ProductFarmRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ProductFarm.objects.all()
+    serializer_class = ProductFarmSerializer
+
+class UserListCreateView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserProductListCreateView(generics.ListCreateAPIView):
+    queryset = UserProduct.objects.all()
+    serializer_class = UserProductSerializer
+
+class UserProductRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UserProduct.objects.all()
+    serializer_class = UserProductSerializer
